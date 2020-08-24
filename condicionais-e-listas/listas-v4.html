@@ -1,0 +1,49 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="(cor, i) in cores" :teste='cor'>{{ cor }} - {{ i }}</li>
+        <!-- : é o v-bind -->
+    </ul>
+    <button @click="cores.push('branca')">Adicionar</button>
+    <hr>
+    <template v-for="(cor, i) in cores">
+        <h1>{{ cor }}</h1>
+        <p>{{ i }}</p>
+    </template>
+    <ul>
+        <!-- lista (obj, index); objeto (valor do parametro, nome do parametro, index) -->
+        <li v-for="(pessoa, i) in pessoas">
+            Oi, eu sou o {{ pessoa.nome }}
+            <span v-for="(valor, chave, index) in pessoa">
+                {{ chave }} = {{valor}}
+            </span>
+        </li>
+    </ul>
+    <hr>
+    <div v-for="n in 10">{{ n }}</div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+            pessoas: [
+                {nome: 'Goku', idade: '60', peso: '200'},
+                {nome: 'Vegeta', idade: '63', peso: '189'}
+            ]
+        }
+    })
+</script>
+
+<style>
+    ul {
+        list-style: none;
+    }
+
+    h1, p {
+        display: inline;
+    }
+</style>

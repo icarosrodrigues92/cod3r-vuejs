@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Matador de Monstro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="panel scores">
+            <div class="score">
+                <h1>Jogador</h1>
+                <div class="life-bar">
+                    <div class="life" :class="{danger: playerLife < 20}" :style="{width: playerLife + '%'}"></div>
+                </div>
+                <div> {{ playerLife }}%</div>
+                <div class="mana-bar">
+                    <div class="mana" :class="{warning: playerMana < 20}" :style="{width: playerMana + '%'}"></div>
+                </div>
+                <div> {{ playerMana }}%</div>
+            </div>
+            <div class="score">
+                <h1>Monstro</h1>
+                <div class="life-bar">
+                    <div class="life" :class="{danger: monsterLife < 20}" :style="{width: monsterLife + '%'}"></div>
+                </div>
+                <div> {{ monsterLife }}%</div>
+            </div>
+        </div>
+        <div class="panel result" v-if="hasResult" :class="{lost: playerLife == 0}">
+            <div>{{ getResult }}</div>
+        </div>
+        <div class="panel controls">
+            <template v-if="running">
+                <button class="btn attack" @click="attack(false)">Ataque</button>
+                <button class="btn magic-attack" @click="attack(true)">Magia</button>
+                <button class="btn heal">Curar</button>
+                <button class="btn give-up" @click="running = false">Desistir</button>
+            </template>
+            <button class="btn new-game" v-else @click="startGame()">Iniciar Jogo</button>
+        </div>
+        <div class="panel logs">
+
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

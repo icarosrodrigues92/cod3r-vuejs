@@ -1,0 +1,41 @@
+<script src="https://unpkg.com/vue"></script>
+
+<style>
+    #app {
+        display: flex;
+        justify-content: space-around;
+    }
+    .demo {
+        width: 100px;
+        height: 100px;
+        background-color: goldenrod;
+    }
+    .c1 {
+        background-color: maroon;
+    }
+    .c2 {
+        background-color: mediumvioletred;
+    }   
+    .c3 {
+        background-color: cyan;
+    }  
+    .classe-que-fere {
+        background-color: red;
+    }  
+</style>
+
+<div id="app">
+    <div class="demo" :class="{'classe-que-fere': aplicarC1}"
+         @click=" aplicarC1 = !aplicarC1"></div>
+    <div class="demo"></div>
+    <div class="demo"></div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            aplicarC1: false
+        }
+    })
+</script>
